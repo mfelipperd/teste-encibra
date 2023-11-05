@@ -62,7 +62,6 @@ function Login() {
                     >Entrar</Button>
                     <Button 
                     variant="outlined"
-                    disabled={!password||password==='Password'?true:false}
                     onClick={() => router.push('/register')}
                     >Cadastrar</Button>
                 </Stack>
