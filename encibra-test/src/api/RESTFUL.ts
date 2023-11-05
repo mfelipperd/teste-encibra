@@ -1,9 +1,9 @@
 import api from './api';
 
 interface Colaborador {
-  id: number;
+  id?: number;
   nome: string;
-  idade: number;
+  idade: string;
   email: string;
   senha: string;
   regimeContratacao: string;
