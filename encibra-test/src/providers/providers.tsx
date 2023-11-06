@@ -1,11 +1,14 @@
 'use client'
 import { UserProvider } from "@/context"
+import { ColaboradoresAPIProvider } from "@/context/api/ColaboradoresAPIContext"
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
         <UserProvider>
-            {children}
+            <ColaboradoresAPIProvider>
+                {children}
+            </ColaboradoresAPIProvider>
         </UserProvider>
         </>
     )

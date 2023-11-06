@@ -8,7 +8,7 @@ function ProfilePage() {
   const { data } = useUserContext();
 
   return (
-    <Paper style={{ padding: '16px', maxWidth:'300px' }}>
+    <Paper style={{ padding: '16px'}}>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4} md={3}>
           <Avatar style={{ width: '96px', height: '96px' }}>A</Avatar>
@@ -17,7 +17,8 @@ function ProfilePage() {
           <Typography variant="h5">Perfil do Colaborador</Typography>
           <Typography variant="h6">Nome: {data.nome}</Typography>
           <Typography>Email: {data.email}</Typography>
-          {/* Outras informações do colaborador */}
+          <Typography>Regime de Contratação: {data.regimeContratacao}</Typography>
+          <Typography>Areas de Atuação: {data.areasAtuacao}</Typography>
         </Grid>
       </Grid>
     </Paper>
@@ -25,4 +26,8 @@ function ProfilePage() {
 }
 
 export default ProfilePage;
+
+function useState(arg0: boolean): [any, any] {
+    throw new Error('Function not implemented.');
+}
 
