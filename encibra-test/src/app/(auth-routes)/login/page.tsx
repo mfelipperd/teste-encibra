@@ -4,24 +4,34 @@ import Container from "@mui/material/Container/Container";
 import Typography from '@mui/material/Typography';
 import { useState } from "react";
 import { useRouter } from 'next/navigation'
+import { signIn, useSession } from 'next-auth/react';
 
 function Login() {
-    
+    const session = useSession();
     const router = useRouter()
+    const [username, setUsername] = useState('Email')
+    const [password, setPassword] = useState('Senha')
 
-    const [username, setUsername] = useState('Username')
-    const [password, setPassword] = useState('Password')
+    const handleLogin = async (username:string, password:string) => {
+      if (username !== null && password !== null && username !== 'Email' && password !== 'Senha') {
+        true
+            } else {
+              setUsername('')
+              setPassword('')
+      }
+      
+      const result = await signIn('credentials',{
+        username,
+        password,
+        redirect: false
+      })
+      if (result?.error){
+        return
+      }
 
+      router.replace('/Dashboard')
 
-    function login(name:string, pass:string) {
-        !name||name==='Username'?setUsername(''): true
-        !pass||pass==='Password'?setPassword(''): true
-
-        const checkUsername  = 'função que vai checar se existe o username e retornoar true or false'
-        const checkPassword  = 'função que vai checar a senha se está correta e se existe'
-        console.log(name, pass)
     }
-
 
     return(
         <Container>
@@ -61,7 +71,7 @@ function Login() {
                     <Button
                     variant="outlined"
                     disabled={!username||username==='Username'?true:false}
-                    onClick={() => login(username, password)}
+                    onClick={() => handleLogin(username, password)}
                     >Entrar</Button>
                     <Button 
                     variant="outlined"

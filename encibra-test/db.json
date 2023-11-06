@@ -29,7 +29,7 @@
       "nome": "TESTE",
       "idade": "12",
       "email": "TESTE@TESTE",
-      "senha": "1234455555",
+      "senha": "teste",
       "regimeContratacao": "CLT",
       "areasAtuacao": [
         "Frontend",
@@ -86,6 +86,20 @@
       ],
       "tipo": "normal",
       "id": 7
+    },
+    {
+      "nome": "teste",
+      "idade": "10",
+      "email": "teste",
+      "senha": "teste",
+      "regimeContratacao": "PJ",
+      "areasAtuacao": [
+        "Frontend",
+        "Infraestrutura",
+        "Backend"
+      ],
+      "tipo": "gestor",
+      "id": 8
     }
   ],
   "projetos": [

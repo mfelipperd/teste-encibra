@@ -24,6 +24,8 @@ export default function Colaboradores() {
     fetchColaboradores();
   }, [getColaboradores]);
 
+  console.log(colaboradores)
+
   return (
     <>
     <Navbar></Navbar>

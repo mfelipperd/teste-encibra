@@ -5,6 +5,7 @@ import { Typography, Stack, TextField, FormControl, InputLabel, Select, MenuItem
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'
 import { useUserContext } from '@/context';
+import { adicionarColaborador } from '@/api/RESTFUL';
 
 function register() {
   const [nome, setNome] = useState('Nome Completo');
@@ -35,8 +36,7 @@ function register() {
         areasAtuacao,
         tipo
     }
-    console.log('PASSOU')
-    //adicionarColaborador(data);
+    adicionarColaborador(data);
     handleChangeData(data);
     
     router.push('/perfil')

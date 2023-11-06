@@ -1,3 +1,4 @@
+'use client'
 import { Colaborador } from '@/interfaces';
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
 
