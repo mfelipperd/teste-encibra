@@ -1,11 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client'
-import { adicionarColaborador } from '@/api/RESTFUL';
+
 import { Typography, Stack, TextField, FormControl, InputLabel, Select, MenuItem, Checkbox, Button, Container } from '@mui/material';
 import React, { useState } from 'react';
-import { useColaboradores }  from '../../context/colaboradoresContext';
 import { useRouter } from 'next/navigation'
-
+import { useUserContext } from '@/context';
 
 function register() {
   const [nome, setNome] = useState('Nome Completo');
@@ -15,8 +14,8 @@ function register() {
   const [regimeContratacao, setRegimeContratacao] = useState('Regime de Contratação');
   const [areasAtuacao, setAreasAtuacao] = useState<string[]>([]);
   const [tipo, setTipo] = useState('Qual o tipo de colaborador?')
+  const { data, handleChangeData } = useUserContext();
   const router = useRouter()
-  const { dispatch } = useColaboradores();
 
   function handleFormSubmit(){
     !nome || nome === 'Nome Completo' ? setNome('') : true
@@ -25,6 +24,7 @@ function register() {
     !senha || senha === 'Senha' ? setSenha('') : true
     !regimeContratacao || regimeContratacao === 'Regime de Contratação' ? setRegimeContratacao('') : true
     !tipo || tipo === 'Qual o tipo de colaborador?' ? setTipo(''): true
+
 
     const data = {
         nome,
@@ -36,8 +36,9 @@ function register() {
         tipo
     }
     console.log('PASSOU')
-    adicionarColaborador(data)
-    dispatch({type: 'ADICIONAR_COLABORADOR', payload:data})
+    //adicionarColaborador(data);
+    handleChangeData(data);
+    
     router.push('/perfil')
   }
 
