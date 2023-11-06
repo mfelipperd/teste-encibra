@@ -1,11 +1,12 @@
 'use client'
+import Navbar from "@/components/navbar";
 import ColaboradorProfile from "@/components/perfil";
 import { useColaboradoresAPI } from "@/context/api/ColaboradoresAPIContext";
 import { Colaborador } from "@/interfaces";
 import { Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export default function ListPerfil() {
+export default function Colaboradores() {
   const { getColaboradores } = useColaboradoresAPI();
 
   const [colaboradores, setColaboradores] = useState<Colaborador[]>([]); // Especificando o tipo como Colaborador[]
@@ -24,6 +25,8 @@ export default function ListPerfil() {
   }, [getColaboradores]);
 
   return (
+    <>
+    <Navbar></Navbar>
     <Stack spacing={3}>
     <Typography variant="h4" color="#1976d2">
       Lista de Colaboradores
@@ -39,5 +42,6 @@ export default function ListPerfil() {
       ))}
     </Stack>
   </Stack>
+    </>
   );
 }
