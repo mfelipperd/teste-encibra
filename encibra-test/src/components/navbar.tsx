@@ -14,12 +14,14 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { isGestor } from "@/app/functions/functions";
+
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const gestor = isGestor()
 
 
   return (
@@ -60,6 +62,7 @@ export default function Navbar() {
           <Link underline='hover' variant="button" href={'/projetos'}>Projetos</Link>
           <Link underline='hover' variant="button" href={'/colaboradores'}>Colaboradores</Link>
           <Link underline='hover' variant="button" href={'/perfil'}>Meu Perfil</Link>
+          <Link display={gestor?'flex':'none'}underline='hover' variant="button" href={'/criarProjeto'}>Adicionar Projeto</Link>
         </Stack>
       </Stack>
       <Drawer anchor="right" open={menuOpen} onClose={() => setMenuOpen(false)}>

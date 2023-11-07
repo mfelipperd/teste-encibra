@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 export default function Colaboradores() {
   const { getColaboradores } = useColaboradoresAPI();
 
-  const [colaboradores, setColaboradores] = useState<Colaborador[]>([]); // Especificando o tipo como Colaborador[]
+  const [colaboradores, setColaboradores] = useState<Colaborador[]>([]);
 
   useEffect(() => {
     async function fetchColaboradores() {
@@ -29,16 +29,21 @@ export default function Colaboradores() {
     <>
     <Navbar></Navbar>
     <Stack>
-    <Typography variant="h4" color="#1976d2">
-      Lista de Colaboradores
-    </Typography>
+    <Typography
+          margin='5px'
+          textAlign='center'
+          variant='h5'>
+          Colaboradores 
+        </Typography>
     <Stack
       display="flex"
       flexDirection="row"
-      flexWrap="wrap" // Adicione essa propriedade para permitir que os elementos fluam para a próxima linha
+      flexWrap="wrap"
     >
       {colaboradores.map((colaborador) => (
-        <ColaboradorProfile key={colaborador.id} colaborador={colaborador} />
+        <ColaboradorProfile 
+        key={colaborador.id} 
+        colaborador={colaborador} />
       ))}
     </Stack>
   </Stack>

@@ -3,6 +3,7 @@
 import React from 'react';
 import { Card, CardContent, Typography, CardActions, Button } from '@mui/material';
 import { Projeto } from '@/interfaces';
+import { isGestor } from '@/app/functions/functions';
  // Certifique-se de importar o tipo Projeto corretamente
 
 interface ProjetoCardProps {
@@ -23,7 +24,7 @@ const ProjetoCard: React.FC<ProjetoCardProps> = ({ projeto }) => {
           Descrição: {projeto.descricao}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{display: isGestor()?'flex':'none'}}>
         <Button size="small" color="primary">
           Detalhes
         </Button>

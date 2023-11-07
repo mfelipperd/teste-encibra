@@ -1,16 +1,12 @@
 'use client'
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
-import { isGestor, sessionUser } from "@/app/functions/functions"
 import Navbar from "@/components/navbar"
 import ProjetoCard from "@/components/projectCard"
 import { useProjetosAPI } from "@/context/api/ProjetosAPIContext"
 import { Projeto } from "@/interfaces"
-import { Button, Card, CardActions, CardContent, Container, Grid, Stack, Typography } from "@mui/material"
-import { getServerSession } from "next-auth"
+import { Container, Grid, Stack, Typography} from "@mui/material"
 import { useEffect, useState } from "react"
 
 export default function Projetos() {
-    const session = sessionUser()
 
     const {  getProjetos } = useProjetosAPI();
     const [projetos, setProjetos] = useState<Projeto[]>([]);
@@ -28,20 +24,27 @@ export default function Projetos() {
         fetchProjetos();
       }, [getProjetos]);
 
-    //if(isGestor(session))
-
     return(
       <>
       <Navbar/>
-        <Container>
-          <Grid container>
-            {projetos.map((projeto) => (
-              <Grid item key={projeto.id} xs={12} sm={6} md={4}>
-                <ProjetoCard projeto={projeto} />
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
+      <Stack>
+        <Typography
+          margin='5px'
+          textAlign='center'
+          variant='h5'>
+          Projetos
+        </Typography>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap">
+              {projetos.map((projeto) => (
+                  <ProjetoCard 
+                  projeto={projeto} 
+                  key={projeto.id}/>
+              ))}
+          </Stack>
+      </Stack>
       </>
     );
 }
