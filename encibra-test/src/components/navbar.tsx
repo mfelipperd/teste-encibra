@@ -61,9 +61,7 @@ export default function Navbar() {
           <Link underline='hover' variant="button" href={'dashboard'}>Dashboard</Link>
           <Link underline='hover' variant="button" href={'/projetos'}>Projetos</Link>
           <Link underline='hover' variant="button" href={'/colaboradores'}>Colaboradores</Link>
-          <Link underline='hover' variant="button" href={'/perfil'}>Meu Perfil</Link>
-          <Link display={gestor?'flex':'none'}underline='hover' variant="button" href={'/criarProjeto'}>Adicionar Projeto</Link>
-        </Stack>
+          <Link underline='hover' variant="button" href={'/perfil'}>Meu Perfil</Link>        </Stack>
       </Stack>
       <Drawer anchor="right" open={menuOpen} onClose={() => setMenuOpen(false)}>
         <List>
