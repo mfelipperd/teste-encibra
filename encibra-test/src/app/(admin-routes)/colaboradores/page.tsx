@@ -28,7 +28,7 @@ export default function Colaboradores() {
   return (
     <>
     <Navbar></Navbar>
-    <Stack spacing={3}>
+    <Stack>
     <Typography variant="h4" color="#1976d2">
       Lista de Colaboradores
     </Typography>
