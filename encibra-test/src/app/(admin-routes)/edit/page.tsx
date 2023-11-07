@@ -28,8 +28,6 @@ function register() {
     !senha || senha === 'Senha' ? setSenha('') : true
     !regimeContratacao || regimeContratacao === 'Regime de Contratação' ? setRegimeContratacao('') : true
     !tipo || tipo === 'Qual o tipo de colaborador?' ? setTipo(''): true
-    const { userId, setUserId } = useUserIdContext();
-    const dataEdit = getColaboradorByID(userId!)
 
     const data = {
         nome,

@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation'
 import { signIn, useSession } from 'next-auth/react';
 
 function Login() {
-    const session = useSession();
     const router = useRouter()
     const [username, setUsername] = useState('Email')
     const [password, setPassword] = useState('Senha')

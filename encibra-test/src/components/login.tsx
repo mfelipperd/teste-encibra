@@ -16,7 +16,6 @@ function Login() {
 
         const checkUsername  = 'função que vai checar se existe o username e retornoar true or false'
         const checkPassword  = 'função que vai checar a senha se está correta e se existe'
-        console.log(name, pass)
     }
 
 
