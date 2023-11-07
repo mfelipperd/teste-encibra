@@ -23,3 +23,14 @@ export interface Session {
       tipo:string
   }
 }
+
+export interface Projeto {
+  id: number;
+  nome: string;
+  prazo: string; // Você pode usar o tipo Date se preferir
+  descricao: string;
+  tecnologias: string[];
+  gestorId: number;
+  backendId: number;
+  frontendId: number;
+}

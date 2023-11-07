@@ -66,6 +66,20 @@
       ],
       "tipo": "normal",
       "id": 9
+    },
+    {
+      "nome": "Sara Rabelo",
+      "idade": "29",
+      "email": "sara@sara.com",
+      "senha": "1234",
+      "regimeContratacao": "PJ",
+      "areasAtuacao": [
+        "Frontend",
+        "Backend",
+        "Infraestrutura"
+      ],
+      "tipo": "gestor",
+      "id": 10
     }
   ],
   "projetos": [
@@ -81,6 +95,32 @@
       "gestorId": 1,
       "backendId": 1,
       "frontendId": 1
+    },
+    {
+      "id": 2,
+      "nome": "primeiro projeto",
+      "prazo": "81997-02-07",
+      "descricao": "primeiro teste se adiciona o projeto corretamente",
+      "tecnologias": [
+        "TypeScript",
+        "React",
+        "JavaScript"
+      ],
+      "gestorId": 1,
+      "backendId": 1,
+      "frontendId": 9
+    },
+    {
+      "id": 3,
+      "nome": "segundo projeto",
+      "prazo": "2023-11-15",
+      "descricao": "teste do segundo projeto",
+      "tecnologias": [
+        "TypeScript"
+      ],
+      "gestorId": 1,
+      "backendId": 3,
+      "frontendId": 10
     }
   ]
 }
