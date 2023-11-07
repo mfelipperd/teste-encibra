@@ -1,16 +1,27 @@
-import { useUserIdContext } from "@/context/id";
-import { Paper, Grid, Avatar, Typography, Button, Stack } from "@mui/material";
-import Link from "next/link";
+'use client'
+import { isGestor, sessionUser } from "@/app/functions/functions";
+import { useEditDataContext } from "@/context/editUsers/editUsers";
+import { Paper, Grid, Typography, Button, Stack } from "@mui/material";
+import { getServerSession } from "next-auth";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-export default function ColaboradorProfile({ colaborador}) {
-  const { userId, setUserId } = useUserIdContext();
+export default function ColaboradorProfile({ colaborador }) {
+  const { data, handleChangeData } = useEditDataContext();
+  const router = useRouter()
+
+  //const { data: session } = useSession()
+
+  const session = sessionUser()
 
   function editFunction() {
-    const id = colaborador.id
-    setUserId(id);
+    
+    const data = colaborador
+    handleChangeData(data)
+    router.push('/edit')
   }
+
     return (
-      <Link href={'/edit'} onClick={editFunction}>
           <Paper style={{ 
           padding: '16px',
           height: '300px',
@@ -23,9 +34,12 @@ export default function ColaboradorProfile({ colaborador}) {
               <Typography>Email: {colaborador.email}</Typography>
               <Typography>Regime de Contratação: {colaborador.regimeContratacao}</Typography>
             <Typography>Areas de Atuação: {colaborador.areasAtuacao}</Typography>
+            <Stack display={isGestor(session)?'flex':'none'}>
+              <Button variant='outlined'onClick={editFunction}>Editar</Button>
+            </Stack>
             </Grid>
           </Grid>
         </Paper>
-      </Link>
     );
   }
+

@@ -3,14 +3,14 @@ import { Colaborador } from '@/interfaces';
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
 
 
-interface UserContextData {
+export interface UserContextData {
   data: Colaborador;
   handleChangeData: (data: Colaborador) => void;
 }
 
 const UserContext = createContext<UserContextData | undefined>(undefined);
 
-interface UserProviderProps {
+export interface UserProviderProps {
   children: ReactNode;
 }
 

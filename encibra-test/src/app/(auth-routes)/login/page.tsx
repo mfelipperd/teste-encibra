@@ -28,7 +28,7 @@ function Login() {
         return
       }
 
-      router.replace('/Dashboard')
+      router.replace('/dashboard')
 
     }
 

@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-async-client-component */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
-import { useUserContext } from '@/context';
 import { Paper, Grid, Avatar, Typography } from '@mui/material';
 import Navbar from '@/components/navbar';
 import { getServerSession } from 'next-auth';
@@ -9,7 +8,6 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import ButtonLogout from '@/components/buttonLogout';
 
   export default async function ProfilePage() {
- // const { data } = useUserContext();
   const session = await getServerSession(authOptions)
   if(!session) {return false}
   const {name, email, tipo,id} = session?.user

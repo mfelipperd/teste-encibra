@@ -1,27 +1,25 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import { Typography, Stack, TextField, FormControl, InputLabel, Select, MenuItem, Checkbox, Button, Container } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'
-import { useUserContext } from '@/context';
-import { adicionarColaborador, getColaboradorByID } from '@/api/RESTFUL';
-import { useUserIdContext } from '@/context/id';
+import { atualizarColaborador, excluirColaborador } from '@/api/RESTFUL';
+import { useEditDataContext } from '@/context/editUsers/editUsers';
 
-function register() {
-  const [nome, setNome] = useState('Nome Completo');
-  const [idade, setIdade] = useState('Idade');
-  const [email, setEmail] = useState('Endereço de Email');
-  const [senha, setSenha] = useState('Senha');
-  const [regimeContratacao, setRegimeContratacao] = useState('Regime de Contratação');
-  const [areasAtuacao, setAreasAtuacao] = useState<string[]>([]);
-  const [tipo, setTipo] = useState('Qual o tipo de colaborador?')
-  const { data, handleChangeData } = useUserContext();
+export default async function register() {
+  const {data: dataContext, handleChangeData} = useEditDataContext();
+  const [nome, setNome] = useState(dataContext.nome);
+  const [idade, setIdade] = useState(dataContext.idade);
+  const [email, setEmail] = useState(dataContext.email);
+  const [senha, setSenha] = useState(dataContext.senha);
+  const [regimeContratacao, setRegimeContratacao] = useState(dataContext.regimeContratacao);
+  const [areasAtuacao, setAreasAtuacao] = useState<string[]>(dataContext.areasAtuacao);
+  const [tipo, setTipo] = useState(dataContext.tipo)
   const router = useRouter()
-  const { userId, setUserId } = useUserIdContext();
-  const dataEdit = getColaboradorByID(userId!)
-  
 
-  function handleFormSubmit(){
+
+  
+  function editUser(){
     !nome || nome === 'Nome Completo' ? setNome('') : true
     !idade || idade === 'Idade' ? setIdade('') : true
     !email || email === 'Endereço de Email' ? setEmail('') : true
@@ -38,16 +36,21 @@ function register() {
         areasAtuacao,
         tipo
     }
-    adicionarColaborador(data);
-    handleChangeData(data);
-    
-    router.push('/perfil')
+    atualizarColaborador(dataContext.id!, data);
+    router.push('/colaboradores')
+  }
+
+  function deleteUser() {
+    if(window.confirm("tem certeza de que deseja excluir o usuário?")){
+      excluirColaborador(dataContext.id!)
+      router.push('/colaboradores')
+    }
   }
 
   return (
     <Container >
       <Typography variant="h5" color='#1976d2'>Editar ou Excluir Colaborador</Typography>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={editUser}>
         <Stack spacing={3}>
           <TextField
             variant="outlined"
@@ -198,18 +201,29 @@ function register() {
             </Select>
           </FormControl>
         </Stack>
+        <Stack
+        spacing={2}
+        >
         <Button
           variant="contained"
           color="primary"
           type="button"
           fullWidth
-          onClick={() => handleFormSubmit()}
+          onClick={() => editUser()}
         >
-          Cadastrar
+          Editar
         </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          type="button"
+          fullWidth
+          onClick={() => deleteUser()}
+        >
+          Deletar
+        </Button>
+        </Stack>
       </form>
     </Container>
   );
 }
-
-export default register;

@@ -56,7 +56,7 @@ export default function Navbar() {
         justifyContent="space-around"
         width="100%"
         >
-          <Link underline='hover' variant="button" href={'/Dashboard'}>Dashboard</Link>
+          <Link underline='hover' variant="button" href={'dashboard'}>Dashboard</Link>
           <Link underline='hover' variant="button" href={'/projetos'}>Projetos</Link>
           <Link underline='hover' variant="button" href={'/colaboradores'}>Colaboradores</Link>
           <Link underline='hover' variant="button" href={'/perfil'}>Meu Perfil</Link>
@@ -64,7 +64,7 @@ export default function Navbar() {
       </Stack>
       <Drawer anchor="right" open={menuOpen} onClose={() => setMenuOpen(false)}>
         <List>
-          <ListItem button component="a" href="/Dashboard">
+          <ListItem button component="a" href="/dashboard">
             <ListItemText primary="Dashboard" />
           </ListItem>
           <ListItem button component="a" href="/projetos">

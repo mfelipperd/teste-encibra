@@ -1,15 +1,7 @@
+import { Colaborador } from '@/interfaces';
 import api from './api';
 
-interface Colaborador {
-  id?: number;
-  nome: string;
-  idade: string;
-  email: string;
-  senha: string;
-  regimeContratacao: string;
-  areasAtuacao: string[];
-  tipo: string;
-}
+
 
 // Função para buscar todos os colaboradores
 export const getColaboradores = async (): Promise<Colaborador[]> => {
