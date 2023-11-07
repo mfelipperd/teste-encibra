@@ -49,3 +49,14 @@ export const excluirColaborador = async (id: number): Promise<void> => {
     throw new Error('Erro ao excluir colaborador: ' + error);
   }
 };
+
+export const getColaboradorByID = async (id: number): Promise<Colaborador | null> => {
+  try {
+    const response = await api.get<Colaborador>(`/colaboradores/${id}`);
+    return response.data;
+  } catch (error) {
+    // Você pode tratar o erro de forma apropriada, por exemplo, retornando null se o colaborador não for encontrado.
+    console.error('Erro ao buscar o colaborador por ID:', error);
+    return null;
+  }
+};

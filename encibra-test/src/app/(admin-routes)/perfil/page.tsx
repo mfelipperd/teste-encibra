@@ -6,11 +6,13 @@ import { Paper, Grid, Avatar, Typography } from '@mui/material';
 import Navbar from '@/components/navbar';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import ButtonLogout from '@/components/buttonLogout';
 
   export default async function ProfilePage() {
  // const { data } = useUserContext();
   const session = await getServerSession(authOptions)
-  console.log(session?.user.email);
+  if(!session) {return false}
+  const {name, email, tipo,id} = session?.user
 
   return (
       <div>
@@ -22,12 +24,11 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route';
             </Grid>
             <Grid item xs={12} sm={8} md={9}>
               <Typography variant="h5">Perfil do Colaborador</Typography>
-              {/* <Typography variant="h6">Nome: {data.nome}</Typography>
-              <Typography>Email: {data.email}</Typography>
-              <Typography>Regime de Contratação: {data.regimeContratacao}</Typography>
-              <Typography>Areas de Atuação: {data.areasAtuacao}</Typography> */}
+              <Typography variant="h6">Nome: {name}</Typography>
+              <Typography>Email: {email}</Typography>
             </Grid>
           </Grid>
+          <ButtonLogout/>
         </Paper>
       </div>
   );

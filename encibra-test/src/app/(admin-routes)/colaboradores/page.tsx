@@ -34,7 +34,6 @@ export default function Colaboradores() {
       Lista de Colaboradores
     </Typography>
     <Stack
-      spacing={2}
       display="flex"
       flexDirection="row"
       flexWrap="wrap" // Adicione essa propriedade para permitir que os elementos fluam para a próxima linha

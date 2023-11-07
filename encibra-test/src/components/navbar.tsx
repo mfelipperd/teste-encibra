@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -59,7 +60,6 @@ export default function Navbar() {
           <Link underline='hover' variant="button" href={'/projetos'}>Projetos</Link>
           <Link underline='hover' variant="button" href={'/colaboradores'}>Colaboradores</Link>
           <Link underline='hover' variant="button" href={'/perfil'}>Meu Perfil</Link>
-          <Link underline='hover' variant="button" href={'logout'}>Logout</Link>
         </Stack>
       </Stack>
       <Drawer anchor="right" open={menuOpen} onClose={() => setMenuOpen(false)}>
@@ -75,9 +75,6 @@ export default function Navbar() {
           </ListItem>
           <ListItem button component="a" href="/perfil">
             <ListItemText primary="Meu Perfil" />
-          </ListItem>
-          <ListItem button component="a" href="/logout">
-            <ListItemText primary="Logout" />
           </ListItem>
         </List>
       </Drawer>
