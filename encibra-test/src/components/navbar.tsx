@@ -11,10 +11,12 @@ import {
   List,
   ListItem,
   ListItemText,
+  Card,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import { isGestor } from "@/app/functions/functions";
+import Image from "next/image";
 
 
 export default function Navbar() {
@@ -25,16 +27,16 @@ export default function Navbar() {
 
 
   return (
+    <Card>
     <Stack
       display='flex'
       flexDirection="row"
       justifyContent="space-between"
       alignContent={"center"}
       alignItems={"center"}
-      bgcolor={'#c4d8ea'}
     >
-      <Grid item xs={12} sm={4} md={3}>
-        <Avatar style={isSmallScreen?{width: '50px', height: '50px', margin: '10px'}:{ width: '70px', height: '70px' }}>A</Avatar>
+      <Grid item xs={12} sm={4} md={3} sx={{margin:'10px', borderRadius: 20}}>
+        <Image alt='logo da empresa encibra'src='/encibra_logo.jpeg' width={80} height={80} radioGroup="20"></Image>
       </Grid>
       <Stack
         display='flex'
@@ -80,6 +82,7 @@ export default function Navbar() {
         </List>
       </Drawer>
     </Stack>
+    </Card>
   );
 }
 

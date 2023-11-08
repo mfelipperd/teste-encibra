@@ -63,6 +63,7 @@ export default function Dashboard() {
       <Stack
       display='flex'
       alignItems='center'
+      justifyContent={"center"}
       >
         <Stack
         width='100%'
@@ -82,7 +83,9 @@ export default function Dashboard() {
           </Stack>
         </Stack>
         <Stack
+            width='100%'
             display="flex"
+            justifyContent={"center"}
             flexDirection="row"
             flexWrap="wrap">
               {result.map((projeto) => (

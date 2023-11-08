@@ -23,7 +23,7 @@ export default function ColaboradorProfile({ colaborador }) {
   return (
     <Card sx={{ width: 320, margin: 1 }}>
       <CardContent>
-        <Typography variant="h5">Nome: {colaborador.nome}</Typography>
+        <Typography variant="h5">{colaborador.nome}</Typography>
         <Typography variant="body2">Email: {colaborador.email}</Typography>
         <Typography display={gestor?'flex':'none'}variant="body2">Regime de Contratação: {colaborador.regimeContratacao}</Typography>
         <Typography variant="body2">Áreas de Atuação: {colaborador.areasAtuacao}</Typography>

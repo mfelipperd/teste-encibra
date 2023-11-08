@@ -40,12 +40,14 @@ export default function Colaboradores() {
     <Typography
           margin='5px'
           textAlign='center'
+          textTransform='uppercase'
           variant='h5'>
           Colaboradores 
         </Typography>
     <Stack
       display="flex"
       flexDirection="row"
+      justifyContent={"center"}
       flexWrap="wrap"
     >
       {colaboradores.map((colaborador) => (

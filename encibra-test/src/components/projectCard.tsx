@@ -24,7 +24,7 @@ export default function ProjetoCard({ projeto }) {
   }
 
   return (
-    <Card sx={{ width: 320, margin: 1 }}>
+    <Card sx={{ width: 320, margin: 1, height:'12rem' }}>
       <CardContent>
         <Typography variant="h6" component="div">
           {projeto.nome}
@@ -36,7 +36,7 @@ export default function ProjetoCard({ projeto }) {
           Descrição: {projeto.descricao}
         </Typography>
       </CardContent>
-      <CardActions sx={{display: isGestor()?'flex':'none'}}>
+      <CardActions>
         <Link href={'/projeto'}>
         <Button onClick={selecionarProjeto}size="small" color="primary">
           Detalhes

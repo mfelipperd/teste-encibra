@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'
 import { atualizarColaborador, excluirColaborador } from '@/api/RESTFUL';
 import { useEditDataContext } from '@/context/editUsers/editUsers';
+import Navbar from '@/components/navbar';
 
 export default async function register() {
   const {data: dataContext, handleChangeData} = useEditDataContext();
@@ -17,8 +18,6 @@ export default async function register() {
   const [tipo, setTipo] = useState(dataContext.tipo)
   const router = useRouter()
 
-
-  
   function editUser(){
     !nome || nome === 'Nome Completo' ? setNome('') : true
     !idade || idade === 'Idade' ? setIdade('') : true
@@ -47,11 +46,16 @@ export default async function register() {
     }
   }
 
-  
-
   return (
-    <Container >
-      <Typography variant="h5" color='#1976d2'>Editar ou Excluir Colaborador</Typography>
+    <>
+    <Navbar/>
+    <Container sx={{maxWidth:'40rem'}} >
+      <Typography 
+      textAlign={'center'}
+      textTransform={'uppercase'} 
+      variant="h5"
+      margin={'10px'}
+      >Editar ou Excluir Colaborador</Typography>
       <form onSubmit={editUser}>
         <Stack spacing={3}>
           <TextField
@@ -204,28 +208,52 @@ export default async function register() {
           </FormControl>
         </Stack>
         <Stack
-        spacing={2}
+        display={'flex'}
+        flexDirection={'row'}
+        justifyContent={'center'}
         >
-        <Button
-          variant="contained"
-          color="primary"
-          type="button"
-          fullWidth
-          onClick={() => editUser()}
+          <Stack
+          width={'8rem'}
+          margin={'0.5rem'}
+          >
+            <Button
+              variant="outlined"
+              color="primary"
+              type="button"
+              onClick={() => editUser()}
+            >
+              Editar
+            </Button>
+          </Stack>
+        <Stack
+        width={'8rem'}
+        margin={'0.5rem'}
         >
-          Editar
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          type="button"
-          fullWidth
-          onClick={() => deleteUser()}
+          <Button
+            variant="outlined"
+            color="primary"
+            type="button"
+            onClick={() => deleteUser()}
+          >
+            Deletar
+          </Button>
+        </Stack>
+        <Stack
+        width={'8rem'}
+        margin={'0.5rem'}
         >
-          Deletar
-        </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            type="button"
+            onClick={() => router.push('/colaboradores')}
+          >
+            cancelar
+          </Button>
+        </Stack>
         </Stack>
       </form>
     </Container>
+    </>
   );
 }

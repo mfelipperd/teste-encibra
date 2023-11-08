@@ -7,9 +7,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  const layoutStyle = {
+    backgroundColor: '#f3f3f3',
+  };
+
   return (
     <html lang="en">
-      <body>
+      <body style={layoutStyle}>
         <Providers>
           {children}
         </Providers>

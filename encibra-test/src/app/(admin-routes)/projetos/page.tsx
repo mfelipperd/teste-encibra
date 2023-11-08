@@ -4,7 +4,8 @@ import Navbar from "@/components/navbar"
 import ProjetoCard from "@/components/projectCard"
 import { useProjetosAPI } from "@/context/api/ProjetosAPIContext"
 import { Projeto } from "@/interfaces"
-import { Container, Grid, Stack, Typography} from "@mui/material"
+import { Stack, Typography} from "@mui/material"
+import { red } from "@mui/material/colors"
 import { useEffect, useState } from "react"
 
 export default function Projetos() {
@@ -36,16 +37,23 @@ export default function Projetos() {
     return(
       <>
       <Navbar/>
-      <Stack>
+      <Stack
+      display='flex'
+      alignItems='center'
+      justifyContent={"center"}
+      >
         <Typography
           margin='5px'
           textAlign='center'
+          textTransform='uppercase'
           variant='h5'>
           Projetos
         </Typography>
           <Stack
             display="flex"
+            height={'auto'}
             flexDirection="row"
+            justifyContent={"center"}
             flexWrap="wrap">
               {projetos.map((projeto) => (
                   <ProjetoCard 
