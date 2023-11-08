@@ -47,6 +47,8 @@ export default async function register() {
     }
   }
 
+  
+
   return (
     <Container >
       <Typography variant="h5" color='#1976d2'>Editar ou Excluir Colaborador</Typography>

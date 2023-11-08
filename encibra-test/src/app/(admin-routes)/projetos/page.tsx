@@ -1,4 +1,5 @@
 'use client'
+import Loading from "@/components/loading"
 import Navbar from "@/components/navbar"
 import ProjetoCard from "@/components/projectCard"
 import { useProjetosAPI } from "@/context/api/ProjetosAPIContext"
@@ -20,10 +21,18 @@ export default function Projetos() {
             console.error('Erro ao buscar projetos:', error);
           }
         }
-    
+        
         fetchProjetos();
       }, [getProjetos]);
 
+      if(!projetos || projetos.length === 0) {
+        return (
+            <>
+            <Navbar/>
+            <Loading/>
+            </>
+    )
+    }
     return(
       <>
       <Navbar/>

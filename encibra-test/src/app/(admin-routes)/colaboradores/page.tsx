@@ -1,4 +1,5 @@
 'use client'
+import Loading from "@/components/loading";
 import Navbar from "@/components/navbar";
 import ColaboradorProfile from "@/components/perfil";
 import { useColaboradoresAPI } from "@/context/api/ColaboradoresAPIContext";
@@ -24,7 +25,14 @@ export default function Colaboradores() {
     fetchColaboradores();
   }, [getColaboradores]);
 
-
+  if(!colaboradores || colaboradores.length === 0) {
+    return (
+        <>
+        <Navbar/>
+        <Loading/>
+        </>
+)
+}
   return (
     <>
     <Navbar></Navbar>

@@ -3,7 +3,7 @@
     {
       "nome": "Marcos Felippe",
       "idade": 26,
-      "email": "felippe @example.com",
+      "email": "felippe@example.com",
       "senha": "senha123",
       "regimeContratacao": "CLT",
       "areasAtuacao": [
@@ -121,6 +121,22 @@
       "gestorId": 1,
       "backendId": 3,
       "frontendId": 10
+    },
+    {
+      "id": 4,
+      "nome": "sistema igreja ",
+      "prazo": "2024-01-01",
+      "descricao": "fazer um sistema / site com o cronograma da igreja",
+      "tecnologias": [
+        "Node.js",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Python"
+      ],
+      "gestorId": 10,
+      "backendId": 8,
+      "frontendId": 8
     }
   ]
 }

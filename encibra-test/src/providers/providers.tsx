@@ -3,14 +3,14 @@ import { UserProvider } from "@/context";
 import { ColaboradoresAPIProvider } from "@/context/api/ColaboradoresAPIContext";
 import { ProjetosAPIProvider } from "@/context/api/ProjetosAPIContext";
 import { EditUserProvider } from "@/context/editUsers/editUsers";
-import { UserIdProvider } from "@/context/id";
+import { ProjetoProvider } from "@/context/projeto/projeto";
 import { SessionProvider } from "next-auth/react";
 
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
-        <UserIdProvider>    
+        <ProjetoProvider>    
             <SessionProvider>
                 <UserProvider>
                     <EditUserProvider>
@@ -22,7 +22,7 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
                     </EditUserProvider>
                 </UserProvider>
             </SessionProvider>
-        </UserIdProvider>
+        </ProjetoProvider>
         </>
     )
 }

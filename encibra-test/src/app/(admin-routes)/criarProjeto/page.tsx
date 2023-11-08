@@ -232,7 +232,7 @@ export default function AdicionarProjeto(){
           >
             Salvar
           </Button>
-          <Button variant="outlined" color="secondary">
+          <Button onClick={() => router.push('/projetos')} variant="outlined" color="secondary">
             Cancelar
           </Button>
         </Stack>

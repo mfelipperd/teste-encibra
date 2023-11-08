@@ -1,16 +1,28 @@
-// ProjetosCardList.tsx
-// ProjetoCard.tsx
+'use client'
 import React from 'react';
 import { Card, CardContent, Typography, CardActions, Button } from '@mui/material';
 import { Projeto } from '@/interfaces';
 import { isGestor } from '@/app/functions/functions';
- // Certifique-se de importar o tipo Projeto corretamente
+import Link from 'next/link';
+import { useProjetoContext } from '@/context/projeto/projeto';
+import { useRouter } from 'next/navigation';
+
+
 
 interface ProjetoCardProps {
   projeto: Projeto;
 }
 
-const ProjetoCard: React.FC<ProjetoCardProps> = ({ projeto }) => {
+export default function ProjetoCard({ projeto }) {
+
+  const { handleChangeData } = useProjetoContext()
+  const router = useRouter()
+
+  function selecionarProjeto(){
+    handleChangeData(projeto);
+    router.push('/projeto')
+  }
+
   return (
     <Card sx={{ width: 320, margin: 1 }}>
       <CardContent>
@@ -25,13 +37,12 @@ const ProjetoCard: React.FC<ProjetoCardProps> = ({ projeto }) => {
         </Typography>
       </CardContent>
       <CardActions sx={{display: isGestor()?'flex':'none'}}>
-        <Button size="small" color="primary">
+        <Link href={'/projeto'}>
+        <Button onClick={selecionarProjeto}size="small" color="primary">
           Detalhes
         </Button>
+        </Link>
       </CardActions>
     </Card>
   );
 };
-
-export default ProjetoCard;
-

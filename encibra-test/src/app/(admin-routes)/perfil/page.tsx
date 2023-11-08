@@ -6,11 +6,21 @@ import Navbar from '@/components/navbar';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import ButtonLogout from '@/components/buttonLogout';
+import Loading from '@/components/loading';
 
   export default async function ProfilePage() {
   const session = await getServerSession(authOptions)
   if(!session) {return false}
   const {name, email, tipo,id} = session?.user
+
+  if(!session){
+    return (
+        <>
+        <Navbar/>
+        <Loading/>
+        </>
+)
+}
 
   return (
       <div>

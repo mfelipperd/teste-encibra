@@ -1,6 +1,7 @@
 'use client'
 import { getProjetos } from "@/api/RESTFULPROJETOS";
 import { isGestor } from "@/app/functions/functions";
+import Loading from "@/components/loading";
 import Navbar from "@/components/navbar";
 import ProjetoCard from "@/components/projectCard";
 import { Projeto } from "@/interfaces";
@@ -13,6 +14,8 @@ import { useEffect, useState } from "react";
 export default function Dashboard() {
   const [projetos, setProjetos] = useState<Projeto[]>([])
   const router = useRouter()
+
+  
 
   function getProjetosPorIdColaborador(idColaborador: number, projetos: Projeto[]): Projeto[] {
     const projetosDoColaborador: Projeto[] = [];
@@ -27,9 +30,8 @@ export default function Dashboard() {
 
   const session = useSession();
   const id = parseInt(session.data?.user.id!)
-  const result = getProjetosPorIdColaborador(id, projetos)
-
-  
+  const result = getProjetosPorIdColaborador(id, projetos)  
+  const gestor = isGestor()
 
   useEffect(() => {
     async function fetchProjetos() {
@@ -40,8 +42,18 @@ export default function Dashboard() {
         console.error('Erro ao buscar projetos:', error);
       }
     }
-    fetchProjetos();
+    fetchProjetos();    
   }, [getProjetos]);
+
+  if(projetos.length === 0) {
+    return (
+        <>
+        <Navbar/>
+        <Loading/>
+        </>
+        )
+  }
+
 
   return(
     <>
@@ -59,7 +71,7 @@ export default function Dashboard() {
         justifyContent="center"
         >
           <Stack 
-          display={isGestor()?'flex':'none'}
+          display={gestor?'flex':'none'}
           width='20rem'
           margin='0.9rem'
           >
