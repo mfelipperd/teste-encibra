@@ -1,13 +1,23 @@
 'use client'
+import { Typography, colors } from "@mui/material";
 import Container from "@mui/material/Container/Container";
-import dynamic from 'next/dynamic'
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter()
+
+  router.push('/login')
   return (
-  <div>
-    <Container>
-      <h1>HOME</h1>
+    <Container sx={{
+      display: "flex",
+      width:'100%',
+      height:'100vh',
+      justifyContent:'center',
+      alignItems:"center"
+    }}>
+      <Typography color={'#1976d2'} variant="h1" textTransform={"uppercase"}>
+        Bem vindo
+      </Typography>
     </Container>
-  </div>
   )
 }
