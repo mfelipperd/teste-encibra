@@ -70,7 +70,7 @@ function Login() {
                 spacing={3}>
                     <TextField 
                     id="username" 
-                    label="Username" 
+                    label="Email" 
                     variant="outlined"
                     error={username? false: true}
                     onChange={(e) => {
