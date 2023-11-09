@@ -20,13 +20,13 @@ import { useRouter } from 'next/navigation';
 import { useProjetoContext } from '@/context/projeto/projeto';
 import Loading from '@/components/loading';
 import Navbar from '@/components/navbar';
+import { isGestor } from '@/app/functions/functions';
 
 export default function AdicionarProjeto(){
   const { getColaboradores } = useColaboradoresAPI();
   const router = useRouter()
   const {projeto: data} = useProjetoContext();
-console.log(data)
-
+  const gestor = isGestor()
   const [projeto, setProjeto] = useState<Projeto>({
     id: 0,
     nome: '',
@@ -39,7 +39,7 @@ console.log(data)
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [colaboradores, setColaboradores] = useState<Colaborador[]>([]); // Especificando o tipo como Colaborador[]
+  const [colaboradores, setColaboradores] = useState<Colaborador[]>([]);
 
   const handleChange = (key: string, value: any) => {
     setProjeto((prevProjeto) => ({
@@ -112,7 +112,6 @@ console.log(data)
   const colaboradorGestor = getColaboradoresGestor('gestor')
 
 
-
   useEffect(() => {
     async function fetchColaboradores() {
       try {
@@ -132,6 +131,8 @@ console.log(data)
         <Loading/>
         </>
 )}
+
+if (!gestor) {return router.push('/dashboard')}
   return (
     <Container>
       <Stack spacing={3}>

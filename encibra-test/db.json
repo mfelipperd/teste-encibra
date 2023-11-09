@@ -29,7 +29,7 @@
       "id": 3
     },
     {
-      "nome": "felippe",
+      "nome": "Marcos Felippe",
       "idade": "25",
       "email": "marcos@encibra.com.br",
       "areasAtuacao": [
@@ -37,7 +37,7 @@
       ],
       "senha": "12345678",
       "regimeContratacao": "CLT",
-      "tipo": "Qual o tipo de colaborador?",
+      "tipo": "gestor",
       "id": 4
     },
     {

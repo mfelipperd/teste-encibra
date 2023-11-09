@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'
 import { useUserContext } from '@/context';
 import { adicionarColaborador } from '@/api/RESTFUL';
+import { isGestor } from '@/app/functions/functions';
 
 function register() {
   const [nome, setNome] = useState('Nome Completo');
@@ -15,7 +16,9 @@ function register() {
   const [regimeContratacao, setRegimeContratacao] = useState('Regime de Contratação');
   const [areasAtuacao, setAreasAtuacao] = useState<string[]>([]);
   const [tipo, setTipo] = useState('Qual o tipo de colaborador?')
-  const { data, handleChangeData } = useUserContext();
+  const { handleChangeData } = useUserContext();
+  const gestor = isGestor()
+
   const router = useRouter()
 
   function handleFormSubmit(){
@@ -41,7 +44,7 @@ function register() {
     
     router.push('/perfil')
   }
-
+  if(!gestor) return router.push('/dashboard')
   return (
     <Container >
       <Typography variant="h5" color='#1976d2'>Cadastro de Colaborador</Typography>

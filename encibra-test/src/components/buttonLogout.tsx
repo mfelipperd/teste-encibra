@@ -14,5 +14,5 @@ export default function ButtonLogout() {
         router.replace('/login')
     }
 
-    return <Button variant='outlined'onClick={logout}>Sair</Button>
+    return <Button variant='outlined'onClick={logout}>Logout</Button>
 }

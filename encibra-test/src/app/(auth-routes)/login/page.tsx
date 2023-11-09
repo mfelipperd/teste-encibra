@@ -1,5 +1,5 @@
 'use client'
-import { Button, Stack, TextField } from "@mui/material";
+import { Alert, Button, Card, Stack, TextField } from "@mui/material";
 import Container from "@mui/material/Container/Container";
 import Typography from '@mui/material/Typography';
 import { useState } from "react";
@@ -10,13 +10,14 @@ function Login() {
     const router = useRouter()
     const [username, setUsername] = useState('Email')
     const [password, setPassword] = useState('Senha')
+    const [errologin, setErrologin] = useState(false)
 
     const handleLogin = async (username:string, password:string) => {
-      if (username !== null && password !== null && username !== 'Email' && password !== 'Senha') {
-        true
-            } else {
-              setUsername('')
-              setPassword('')
+
+      if (!username || !password  || username === 'Email' || password === 'Senha') {
+        setUsername('')
+        setPassword('')
+        return false
       }
       
       const result = await signIn('credentials',{
@@ -24,21 +25,40 @@ function Login() {
         password,
         redirect: false
       })
+
+      console.log(result)
+
+
       if (result?.error){
-        return
+        setErrologin(true)
+        return console.log(result.error)
       }
-
-      router.replace('/dashboard')
-
+      router.push('/dashboard')
     }
 
     return(
-        <Container>
+        <Container
+        sx={{
+          display:'flex',
+          width:'100%',
+          height:'100vh',
+          justifyContent: 'center',
+          alignItems:'center'
+        }}
+        >
+          <Card
+          sx={
+            {
+              width:'25rem',
+              height:'30rem'
+            }
+          }
+          >
             <Stack
             display='flex'
             justifyContent='center'
             alignItems='center'
-            minHeight='100vh'
+            minHeight='60vh'
             spacing={3}>
                 <Typography
                 variant="h3" gutterBottom color='#1976d2'
@@ -53,14 +73,20 @@ function Login() {
                     label="Username" 
                     variant="outlined"
                     error={username? false: true}
-                    onChange={(e) => setUsername(e.target.value)}/>
+                    onChange={(e) => {
+                      setUsername(e.target.value)
+                      setErrologin(false)
+                    }}/>
                     <TextField
                     id="password"
                     label="Password"
                     variant="outlined"
                     type="password"
                     error={password? false: true}
-                    onChange={(e) => setPassword(e.target.value)}/>
+                    onChange={(e) =>{
+                      setPassword(e.target.value)
+                      setErrologin(false)
+                    } }/>
                 </Stack>
                 <Stack
                 display='felx'
@@ -72,15 +98,12 @@ function Login() {
                     disabled={!username||username==='Username'?true:false}
                     onClick={() => handleLogin(username, password)}
                     >Entrar</Button>
-                    <Button 
-                    variant="outlined"
-                    onClick={() => router.push('/register')}
-                    >Cadastrar</Button>
                 </Stack>
-                {/* <Typography
-                    variant="caption" gutterBottom
-                    > se você ainda não tem uma conta clique em cadastrar </Typography> */}
+                <Stack display={errologin?'flex':'none' }>
+                <Alert severity="error">Email ou Senha incorretos</Alert>
+                </Stack>
             </Stack>
+          </Card>
         </Container>
     )
 }

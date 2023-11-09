@@ -1,8 +1,7 @@
 'use client'
 import {
-  Avatar,
-  Grid,
   Link,
+  Grid,
   Stack,
   useMediaQuery,
   useTheme,
@@ -36,7 +35,9 @@ export default function Navbar() {
       alignItems={"center"}
     >
       <Grid item xs={12} sm={4} md={3} sx={{margin:'10px', borderRadius: 20}}>
-        <Image alt='logo da empresa encibra'src='/encibra_logo.jpeg' width={80} height={80} radioGroup="20"></Image>
+        <Link href='/dashboard'>
+        <Image  alt='logo da empresa encibra'src='/encibra_logo.jpeg' width={80} height={80} radioGroup="20"></Image>
+        </Link>
       </Grid>
       <Stack
         display='flex'

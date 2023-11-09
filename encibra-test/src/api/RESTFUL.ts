@@ -52,3 +52,15 @@ export const getColaboradorByID = async (id: number): Promise<Colaborador | null
     return null;
   }
 };
+
+export const getColaboradorByEmail = async (email: string): Promise<Colaborador | null> => {
+  try {
+    const response = await api.get<Colaborador>(`/colaboradores/?email=${email}`);
+    if(response.data.email) return null
+    return response.data;
+  } catch (error) {
+    // Você pode tratar o erro de forma apropriada, por exemplo, retornando null se o colaborador não for encontrado.
+    console.error('Erro ao buscar o colaborador por ID:', error);
+    return null;
+  }
+};

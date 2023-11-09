@@ -74,7 +74,7 @@ useEffect(() => {
         alignItems={'center'}
         flexDirection={'row'}>
         <ButtonLogout />
-        <Button onClick={editPerfil}variant='outlined'>Editar</Button>
+        <Button sx={{margin:'5px'}} onClick={editPerfil}variant='outlined'>Editar</Button>
         </Stack>
       </Paper>
     </div>
@@ -83,7 +83,7 @@ useEffect(() => {
 const editPageProfile = (
   <>
   <Navbar/>
-  <ProfileEditComponent onSave={onSave} perfilData={perfilData!}/>
+  <ProfileEditComponent onSave={onSave} perfilData={perfilData!} editing={setIsEditing}/>
   </>
 )
 return isEditing?editPageProfile:pageProfile

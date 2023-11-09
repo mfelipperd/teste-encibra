@@ -19,6 +19,7 @@ import { get } from 'http';
 import { tecnologias } from '@/shared/data';
 import { adicionarProjetos } from '@/api/RESTFULPROJETOS';
 import { useRouter } from 'next/navigation';
+import { isGestor } from '@/app/functions/functions';
 
 export default function AdicionarProjeto(){
   const { getColaboradores } = useColaboradoresAPI();
@@ -36,7 +37,8 @@ export default function AdicionarProjeto(){
     frontendId: 0,
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [colaboradores, setColaboradores] = useState<Colaborador[]>([]); // Especificando o tipo como Colaborador[]
+  const [colaboradores, setColaboradores] = useState<Colaborador[]>([]);
+  const gestor = isGestor()
 
   const handleChange = (key: string, value: any) => {
     setProjeto((prevProjeto) => ({
@@ -121,6 +123,8 @@ export default function AdicionarProjeto(){
 
     fetchColaboradores();
   }, [getColaboradores]);
+
+  if (!gestor) {return router.push('/dashboard')}
 
   return (
     <Container>

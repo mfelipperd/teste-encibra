@@ -73,13 +73,21 @@ export default function Dashboard() {
         >
           <Stack 
           display={gestor?'flex':'none'}
-          width='20rem'
           margin='0.9rem'
+          flexDirection={"row"}
           >
-            <Button  
+            <Button 
+            sx={{margin: '5px'}}
             variant="outlined" 
             onClick={()=> router.push('/criarProjeto')}
-            >Adicionar Projeto</Button>
+            >Adicionar Projeto
+            </Button>
+            <Button  
+            sx={{margin: '5px'}}
+            variant="outlined" 
+            onClick={()=> router.push('/register')}
+            >Adicionar Colaborador
+            </Button>
           </Stack>
         </Stack>
         <Stack

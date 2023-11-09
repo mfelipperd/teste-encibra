@@ -11,7 +11,7 @@ export default async function PrivateLayout({ children }:PrivateLayoutProps) {
     const session = await getServerSession(authOptions)
 
     if (session) {
-        redirect('/Dashboard')
+        redirect('/dashboard')
     }
 
     return <>{children}</>

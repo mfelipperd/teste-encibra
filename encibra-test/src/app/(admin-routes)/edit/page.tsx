@@ -6,8 +6,11 @@ import { useRouter } from 'next/navigation'
 import { atualizarColaborador, excluirColaborador } from '@/api/RESTFUL';
 import { useEditDataContext } from '@/context/editUsers/editUsers';
 import Navbar from '@/components/navbar';
+import { isGestor } from '@/app/functions/functions';
 
-export default async function register() {
+
+export default function register() {
+
   const {data: dataContext, handleChangeData} = useEditDataContext();
   const [nome, setNome] = useState(dataContext.nome);
   const [idade, setIdade] = useState(dataContext.idade);
@@ -17,6 +20,7 @@ export default async function register() {
   const [areasAtuacao, setAreasAtuacao] = useState<string[]>(dataContext.areasAtuacao);
   const [tipo, setTipo] = useState(dataContext.tipo)
   const router = useRouter()
+  const gestor = isGestor()
 
   function editUser(){
     !nome || nome === 'Nome Completo' ? setNome('') : true
@@ -39,6 +43,8 @@ export default async function register() {
     router.push('/colaboradores')
   }
 
+ 
+
   function deleteUser() {
     if(window.confirm("tem certeza de que deseja excluir o usuário?")){
       excluirColaborador(dataContext.id!)
@@ -46,6 +52,7 @@ export default async function register() {
     }
   }
 
+  if (!gestor) {return router.push('/dashboard')}
   return (
     <>
     <Navbar/>

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { getColaboradores } from "@/api/RESTFUL";
+import { getColaboradorByEmail, getColaboradores } from "@/api/RESTFUL";
 import { Colaborador } from "@/interfaces/interfaces";
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
@@ -15,17 +15,18 @@ const authOptions: NextAuthOptions = {
         },
         
         authorize: async (credentials, req) => {
-          if (!credentials) return null;
-          const colaboradores = await getColaboradores();
-          const user = colaboradores.find((colaborador: Colaborador) => {
-            return (
-              colaborador.email === credentials.username &&
-              colaborador.senha === credentials.password
-            );
-          });
+          if (!credentials || credentials.username==='Email' || credentials.password==='Password') {
+          return null
+          }
+          const[ user ]= await getColaboradorByEmail(credentials.username);
+          console.log(user)
+          if (!user || user.senha !== credentials.password) {
+            return null;
+          }
           if (user) {
             return { id: user.id, name: user.nome, email: user.email, tipo: user.tipo };
           } else {
+            // Se houver algum outro caso de erro, você pode retornar um objeto de erro
             return null;
           }
         },

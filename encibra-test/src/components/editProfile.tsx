@@ -11,6 +11,7 @@ import {
   Checkbox,
   FormControlLabel,
   FormGroup,
+  Stack,
 } from '@mui/material';
 import ButtonLogout from '@/components/buttonLogout';
 import { Colaborador } from '@/interfaces';
@@ -20,6 +21,7 @@ import Navbar from './navbar';
 interface ProfileEditComponentProps {
   perfilData: Colaborador;
   onSave: (id: number, data:Colaborador) => void;
+  editing:Function
 }
 
 
@@ -27,6 +29,7 @@ interface ProfileEditComponentProps {
 const ProfileEditComponent: React.FC<ProfileEditComponentProps> = ({
   perfilData,
   onSave,
+  editing
 }) => {
   const options = [
     'Frontend',
@@ -46,21 +49,19 @@ const ProfileEditComponent: React.FC<ProfileEditComponentProps> = ({
   const [tipo, setTipo] = useState(editedPerfilData.tipo)
 
   const handleCheckboxChange = (value:string) => {
-    // Faça uma cópia do estado atual de checkedItems para evitar mutações diretas
     const updatedCheckedItems = [...checkedItems];
-  
     if (updatedCheckedItems.includes(value)) {
-      // Se o item já estiver na lista, remova-o
       updatedCheckedItems.splice(updatedCheckedItems.indexOf(value), 1);
     } else {
-      // Caso contrário, adicione-o
       updatedCheckedItems.push(value);
     }
-  
-    // Defina os estados checkedItems e areasAtuacao
     setCheckedItems(updatedCheckedItems);
     setAreasAtuacao(updatedCheckedItems);
   };
+
+  function editPerfil() {
+    return editing(false)
+  }
 
   const handleSave = () => {
     !nome || nome === 'Nome Completo' ? setNome('') : true
@@ -105,6 +106,9 @@ if(!editedPerfilData) {
             <FormGroup>
   { options.map((option, index) => (
     <FormControlLabel
+    sx={{
+      width:'15rem'
+    }}
       key={index}
       control={
         <Checkbox
@@ -117,12 +121,27 @@ if(!editedPerfilData) {
   )) }
 </FormGroup>
             </Typography>
-            <Button variant="contained" color="primary" onClick={handleSave}>
+            <Stack
+            display={'flex'}
+            flexDirection={'row'}
+            >
+            <Button 
+            sx={{margin:'5px'}}
+            variant="outlined" 
+            color="primary" 
+            onClick={handleSave}>
               Salvar
             </Button>
+            <Button 
+            sx={{margin:'5px'}}
+            variant="outlined" 
+            color="primary" 
+            onClick={editPerfil}>
+              cancelar
+            </Button>
+            </Stack>
           </Grid>
         </Grid>
-        <ButtonLogout />
       </Paper>
     </div>
   );
