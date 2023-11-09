@@ -1,10 +1,10 @@
 {
   "colaboradores": [
     {
-      "nome": "Marcos Felippe",
+      "nome": "Von Harrison",
       "idade": 26,
-      "email": "felippe@example.com",
-      "senha": "senha123",
+      "email": "admin@encibra.com.br",
+      "senha": "admin",
       "regimeContratacao": "CLT",
       "areasAtuacao": [
         "Frontend",
@@ -15,10 +15,10 @@
       "id": 1
     },
     {
-      "nome": "TESTE",
+      "nome": "Rafael",
       "idade": "12",
-      "email": "TESTE@TESTE",
-      "senha": "teste",
+      "email": "rafael@encibra.com.br",
+      "senha": "admin",
       "regimeContratacao": "CLT",
       "areasAtuacao": [
         "Frontend",
@@ -29,36 +29,36 @@
       "id": 3
     },
     {
-      "nome": "Marcos Felippe",
+      "nome": "Marcelo Daniel",
       "idade": "25",
-      "email": "marcos@encibra.com.br",
+      "email": "marcelo@encibra.com.br",
       "areasAtuacao": [
         "Frontend"
       ],
-      "senha": "12345678",
+      "senha": "admin",
       "regimeContratacao": "CLT",
       "tipo": "gestor",
       "id": 4
     },
     {
-      "nome": "teste",
+      "nome": "Marcos Felippe",
       "idade": "10",
       "email": "teste",
-      "senha": "teste",
+      "senha": "contratado",
       "regimeContratacao": "PJ",
       "areasAtuacao": [
         "Frontend",
         "Infraestrutura",
         "Backend"
       ],
-      "tipo": "gestor",
+      "tipo": "normal",
       "id": 8
     },
     {
       "nome": "Marcos Felippe",
       "idade": 26,
-      "email": "felipe@encibra.com",
-      "senha": "senha123",
+      "email": "usuario@encibra.com.br",
+      "senha": "usuario",
       "regimeContratacao": "CLT",
       "areasAtuacao": [
         "Frontend",

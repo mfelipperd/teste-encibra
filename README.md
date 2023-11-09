@@ -43,8 +43,10 @@ Para rodar o Frontend:
 npm run dev
 ```
 Acesse a Aplicação no Navegador:
+
 http://localhost:3000
-Certifique-se que as portas 3000 e 3001 estjeam liberadas.
+
+Certifique-se que as portas 3000 e 3001 estejam liberadas.
 
 - No arquivo db.json na raiz do projeto constam todos os colaboradores e projetos.
 
